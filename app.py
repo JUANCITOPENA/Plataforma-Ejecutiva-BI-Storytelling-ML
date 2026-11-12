@@ -2966,7 +2966,12 @@ for idx, (tab, fn, title) in enumerate(zip(TABS, tab_funcs, TAB_TITLES)):
             f'</div></div>'
         )
 
-
-"""
-
-html(footer_html)
+# ==============================================================================
+# 11. PIE DE PÁGINA CORPORATIVO
+# ==============================================================================
+st.markdown("---")
+html(
+    f'<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:0.85rem;color:{THEME["text_secondary"]};">'
+    f'<div>⚡ <b>Executive 360° Enterprise BI & Machine Learning Suite</b> | Streamlit • Plotly • Scikit-Learn • SciPy • Web Speech API</div>'
+    f'<div>Ing. Juancito Peña · Analítica integral con narración ejecutiva inteligente y locución fonética en tiempo real</div></div>'
+)
