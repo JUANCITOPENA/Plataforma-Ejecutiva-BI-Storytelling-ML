@@ -28,6 +28,7 @@ wheels/
 scratch/
 *.log
 app2.py
+gemini.py
 
 # Streamlit local
 .streamlit/secrets.toml
