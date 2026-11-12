@@ -2967,11 +2967,227 @@ for idx, (tab, fn, title) in enumerate(zip(TABS, tab_funcs, TAB_TITLES)):
         )
 
 # ==============================================================================
-# 11. PIE DE PÁGINA CORPORATIVO
+# 11. PRESENTACIÓN DEL AUTOR & FOOTER OFICIAL INSTITUCIONAL (ING. JUANCITO PEÑA)
 # ==============================================================================
 st.markdown("---")
-html(
-    f'<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:0.85rem;color:{THEME["text_secondary"]};">'
-    f'<div>⚡ <b>Executive 360° Enterprise BI & Machine Learning Suite</b> | Streamlit • Plotly • Scikit-Learn • SciPy • Web Speech API</div>'
-    f'<div>Ing. Juancito Peña · Analítica integral con narración ejecutiva inteligente y locución fonética en tiempo real</div></div>'
-)
+
+footer_html = f"""
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+<style>
+/* --- TARJETA DE PERFIL DEL AUTOR --- */
+.footer-profile-card {{
+    background: #FFFFFF !important;
+    border: 2.5px solid #000000 !important;
+    border-radius: 14px !important;
+    padding: 2rem !important;
+    box-shadow: 6px 6px 0px #000000 !important;
+    margin-bottom: 2rem !important;
+    margin-top: 1rem !important;
+    color: #0F172A !important;
+}}
+
+/* --- TECH PILLS (STACK CON LOGOS DEVICON) --- */
+.tech-pill {{
+    background: #FFFFFF !important;
+    border: 1.5px solid #000000 !important;
+    color: #000000 !important;
+    font-weight: 700 !important;
+    padding: 0.30rem 0.65rem !important;
+    border-radius: 8px !important;
+    font-size: 0.82rem !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    box-shadow: 2px 2px 0px #000000 !important;
+    margin: 3px 2px !important;
+    vertical-align: middle !important;
+    transition: all 0.15s ease !important;
+}}
+
+.tech-pill:hover {{
+    transform: translateY(-2px) !important;
+    box-shadow: 3px 3px 0px #000000 !important;
+}}
+
+.tech-pill img {{
+    width: 18px !important;
+    height: 18px !important;
+    object-fit: contain !important;
+}}
+
+/* --- BOTONES DE REDES SOCIALES --- */
+.social-btn {{
+    width: 44px !important;
+    height: 44px !important;
+    background: #FFFFFF !important;
+    border: 2px solid #000000 !important;
+    border-radius: 8px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.25rem !important;
+    box-shadow: 3px 3px 0px #000000 !important;
+    transition: all 0.15s ease !important;
+    text-decoration: none !important;
+}}
+
+.social-btn:hover {{
+    transform: translate(-2px, -2px) !important;
+    box-shadow: 5px 5px 0px #000000 !important;
+}}
+
+/* --- FOOTER OFICIAL INSTITUCIONAL --- */
+.footer-official {{
+    background: #FFFFFF !important;
+    border: 2.5px solid #000000 !important;
+    border-radius: 12px !important;
+    padding: 1.75rem 2rem !important;
+    width: 100% !important;
+    color: #000000 !important;
+    box-shadow: 5px 5px 0px #000000 !important;
+    margin-bottom: 2rem !important;
+}}
+</style>
+
+<!-- TARJETA DE PERFIL OFICIAL (ING. JUANCITO PEÑA VIZCAÍNO) -->
+<div class="footer-profile-card">
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; align-items: start;">
+    
+    <!-- LATERAL IZQUIERDO: BIOGRAFÍA, FILOSOFÍA Y DOCENCIA -->
+    <div>
+      <!-- Encabezado con Avatar Oficial y Badges -->
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 1rem;">
+        <img 
+          src="https://avatars.githubusercontent.com/u/38921558?v=4" 
+          alt="Ing. Juancito Peña Vizcaíno" 
+          style="width: 86px; height: 86px; object-fit: cover; border-radius: 50%; border: 2.5px solid #000000; box-shadow: 3px 3px 0px #000000; flex-shrink: 0;"
+        >
+        <div>
+          <h3 style="margin: 0 0 6px 0; font-weight: 800; color: #000000 !important; font-size: 1.35rem;">Ing. Juancito Peña Vizcaíno</h3>
+          <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+            <span style="background: #000000; color: #FFFFFF; font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 6px;">Data Analyst</span>
+            <span style="background: #DA291C; color: #FFFFFF; font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 6px;">Full Stack Dev</span>
+            <span style="background: #0D6EFD; color: #FFFFFF; font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 6px;">AI &amp; API Expert</span>
+            <span style="background: #FFC107; color: #000000; font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 6px;">Líder I+D+i</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- PÁRRAFO 1: Trayectoria, Formación y Foco en I+D+i -->
+      <p style="color: #0F172A !important; font-weight: 500; font-size: 0.90rem; line-height: 1.65; margin-bottom: 12px;">
+        <strong>Ingeniero en Sistemas y Computación</strong> con Postgrado en <strong>Ingeniería de Software</strong> y Maestría en <strong>Sistemas Mención Gerencial</strong> (<em>Universidad Dominicana O&amp;M</em>). Con más de <strong>15 años de trayectoria</strong>, transformo problemas de alta complejidad en soluciones escalables. Durante el último año, he centrado mi trabajo en <strong>I+D+i (Investigación, Desarrollo e Innovación)</strong>, explorando arquitecturas de <strong>IA Generativa (RAG / LLMs)</strong>, integración de agentes autónomos con bases de datos y orquestación de APIs empresariales.
+      </p>
+
+      <!-- PÁRRAFO 2: ADN Técnico, Pasión por los Casos de Uso y Docencia Práctica -->
+      <p style="color: #0F172A !important; font-weight: 500; font-size: 0.90rem; line-height: 1.65; margin: 0;">
+        🔬 <strong>Mi motor es el aprendizaje a través de los retos:</strong> me apasionan los <em>casos de uso reales</em>, las <strong>pruebas técnicas rigurosas</strong>, la investigación profunda y el diseño de soluciones directas a problemas de ingeniería. 🎓 Como <strong>docente universitario</strong> y creador del canal educativo <strong>@JuancitoDevV</strong>, comparto este conocimiento práctico mediante ejercicios y proyectos de código abierto para acercar la tecnología a problemas reales. 🚀
+      </p>
+    </div>
+
+    <!-- LATERAL DERECHO: STACK VISUAL AGRUPADO & CANALES OFICIALES -->
+    <div>
+      <div style="margin-bottom: 1.5rem;">
+        <h4 style="font-weight: 800; font-size: 0.98rem; margin: 0 0 10px 0; color: #000000 !important;">
+          <i class="bi bi-stack" style="color: #DC2626;"></i> Ecosistema de Tecnologías:
+        </h4>
+
+        <!-- 1. Frontend & Web -->
+        <div style="margin-bottom: 8px;">
+          <small style="display: block; font-weight: 800; color: #000000; font-size: 0.78rem; margin-bottom: 3px;">🖥️ Frontend &amp; Web:</small>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"> HTML5</span>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"> CSS3</span>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"> JavaScript</span>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"> React</span>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js"> Next.js</span>
+        </div>
+
+        <!-- 2. Backend & Multiplataforma -->
+        <div style="margin-bottom: 8px;">
+          <small style="display: block; font-weight: 800; color: #000000; font-size: 0.78rem; margin-bottom: 3px;">⚙️ Backend &amp; Multiplataforma:</small>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#"> C#</span>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET"> .NET / MAUI</span>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"> Python</span>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"> PHP</span>
+        </div>
+
+        <!-- 3. Datos & Analítica -->
+        <div style="margin-bottom: 8px;">
+          <small style="display: block; font-weight: 800; color: #000000; font-size: 0.78rem; margin-bottom: 3px;">📊 Data Analytics &amp; Bases de Datos:</small>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server"> SQL Server</span>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"> PostgreSQL</span>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"> MySQL</span>
+          <span class="tech-pill"><i class="bi bi-bar-chart-fill" style="color: #F59E0B;"></i> Power BI / DAX</span>
+        </div>
+
+        <!-- 4. IA, APIs & Cloud -->
+        <div style="margin-bottom: 0;">
+          <small style="display: block; font-weight: 800; color: #000000; font-size: 0.78rem; margin-bottom: 3px;">🤖 IA + APIs &amp; Despliegue (I+D+i):</small>
+          <span class="tech-pill"><i class="bi bi-plug-fill" style="color: #0D6EFD;"></i> APIs REST</span>
+          <span class="tech-pill"><i class="bi bi-cpu-fill" style="color: #DC2626;"></i> IA + LLMs (RAG)</span>
+          <span class="tech-pill"><i class="bi bi-robot" style="color: #10B981;"></i> Agentes IA</span>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"> Git</span>
+          <span class="tech-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"> GitHub</span>
+          <span class="tech-pill"><i class="bi bi-triangle-fill" style="color: #000000; font-size: 0.75rem;"></i> Vercel</span>
+        </div>
+      </div>
+
+      <!-- Redes Sociales Oficiales -->
+      <div style="margin-top: 1rem;">
+        <h4 style="font-weight: 800; font-size: 0.95rem; margin: 0 0 10px 0; color: #000000 !important;">Canales Oficiales &amp; Redes:</h4>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px;">
+          <a href="https://www.linkedin.com/in/juancitope%C3%B1a/" target="_blank" class="social-btn" title="LinkedIn Oficial" rel="noopener noreferrer">
+            <i class="bi bi-linkedin" style="color: #0A66C2;"></i>
+          </a>
+          <a href="https://www.youtube.com/@JuancitoDevV" target="_blank" class="social-btn" title="YouTube @JuancitoDevV" rel="noopener noreferrer">
+            <i class="bi bi-youtube" style="color: #DC2626;"></i>
+          </a>
+          <a href="https://github.com/JUANCITOPENA" target="_blank" class="social-btn" title="GitHub @JUANCITOPENA" rel="noopener noreferrer">
+            <i class="bi bi-github" style="color: #000000;"></i>
+          </a>
+          <a href="https://twitter.com/JuancitoPenaV" target="_blank" class="social-btn" title="X (Twitter) @JuancitoPenaV" rel="noopener noreferrer">
+            <i class="bi bi-twitter-x" style="color: #000000;"></i>
+          </a>
+          <a href="mailto:juancito.pena@gmail.com" class="social-btn" title="Correo Electrónico">
+            <i class="bi bi-envelope-at-fill" style="color: #EA4335;"></i>
+          </a>
+        </div>
+
+        <!-- Tarjeta Promocional de YouTube -->
+        <div style="padding: 10px 14px; background: #FFFFFF; border: 2px solid #000000; border-radius: 8px; box-shadow: 3px 3px 0px #000000; display: flex; align-items: center; gap: 12px;">
+          <i class="bi bi-play-circle-fill" style="color: #DC2626; font-size: 2rem;"></i>
+          <div>
+            <small style="display: block; font-weight: 800; color: #DC2626; font-size: 0.75rem;">Canal Educativo de YouTube:</small>
+            <a href="https://www.youtube.com/@JuancitoDevV" target="_blank" style="font-weight: 800; color: #000000; text-decoration: none; font-size: 0.88rem;" rel="noopener noreferrer">
+              @JuancitoDevV · Algoritmos, SQL, IA &amp; .NET <i class="bi bi-box-arrow-up-right" style="font-size: 0.72rem;"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- FOOTER OFICIAL INSTITUCIONAL NEO-BRUTALIST -->
+<footer class="footer-official">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+    <div>
+      <span style="background: #000000; color: #FFFFFF; font-size: 0.75rem; font-weight: 800; padding: 4px 10px; border-radius: 6px; margin-right: 8px;">PROYECTO OFICIAL JPV</span>
+      <strong style="color: #000000; font-size: 0.95rem;">Sistemas, Datos &amp; Arquitectura de Software</strong>
+      <p style="margin: 6px 0 0 0; font-size: 0.82rem; color: #334155;">
+        Plataforma de grado industrial desarrollada bajo estándares de alto rendimiento, accesibilidad universal WCAG 2.2 AAA y diseño limpio.
+      </p>
+      <p style="margin: 4px 0 0 0; font-size: 0.75rem; color: #475569;">
+        <strong>Aviso Académico &amp; Autoría:</strong> Diseñado, desarrollado y certificado por el <strong>Ing. Juancito Peña Vizcaíno</strong>. Todos los derechos reservados.
+      </p>
+    </div>
+    <div>
+      <a href="#top" style="color: #DC2626; font-weight: 800; text-decoration: none; font-size: 0.90rem; display: inline-flex; align-items: center; gap: 6px;">
+        <i class="bi bi-arrow-up-circle-fill"></i> Volver al Inicio
+      </a>
+    </div>
+  </div>
+</footer>
+"""
+
+html(footer_html)

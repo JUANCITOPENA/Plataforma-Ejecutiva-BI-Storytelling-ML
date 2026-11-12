@@ -1,0 +1,96 @@
+¡Hola a toda la comunidad de Facebook, apasionados de la tecnología, los datos y la innovación! 👋📊
+
+Hoy quiero compartir con ustedes un proyecto de índole profesional enfocado en 𝗜 + 𝗗 + 𝗶 (𝗜𝗻𝘃𝗲𝘀𝘁𝗶𝗴𝗮𝗰𝗶ó𝗻, 𝗗𝗲𝘀𝗮𝗿𝗿𝗼𝗹𝗹𝗼 𝗲 𝗜𝗻𝗻𝗼𝘃𝗮𝗰𝗶ó𝗻) que vengo trabajando para explorar y demostrar el verdadero potencial disruptivo que tienen las tecnologías del ecosistema de 𝗣𝘆𝘁𝗵𝗼𝗻, 𝗦𝘁𝗿𝗲𝗮𝗺𝗹𝗶𝘁 y la 𝗜𝗻𝘁𝗲𝗹𝗶𝗴𝗲𝗻𝗰𝗶𝗮 𝗔𝗿𝘁𝗶𝗳𝗶𝗰𝗶𝗮𝗹 moderna cuando convergen de forma armoniosa con los principios de 𝗕𝘂𝘀𝗶𝗻𝗲𝘀𝘀 𝗜𝗻𝘁𝗲𝗹𝗹𝗶𝗴𝗲𝗻𝗰𝗲, 𝗘𝘀𝘁𝗮𝗱í𝘀𝘁𝗶𝗰𝗮 𝗜𝗻𝗳𝗲𝗿𝗲𝗻𝗰𝗶𝗮𝗹, 𝗙𝗶𝗻𝗮𝗻𝘇𝗮𝘀 𝗖𝗼𝗿𝗽𝗼𝗿𝗮𝘁𝗶𝘃𝗮𝘀 y 𝗠𝗮𝗰𝗵𝗶𝗻𝗲 𝗟𝗲𝗮𝗿𝗻𝗶𝗻𝗴.
+
+En la analítica contemporánea, los cuadros de mando tradicionales suelen limitarse a ser paneles estáticos y mudos, donde el usuario debe adivinar qué ocurrió. Este proyecto nace de una premisa clara: ¿𝗲𝘀 𝗽𝗼𝘀𝗶𝗯𝗹𝗲 𝘁𝗿𝗮𝗻𝘀𝗳𝗼𝗿𝗺𝗮𝗿 𝗹𝗼𝘀 𝗱𝗮𝘁𝗼𝘀 𝗯𝗿𝘂𝘁𝗼𝘀 𝗲𝗻 𝘂𝗻𝗮 𝗲𝘅𝗽𝗲𝗿𝗶𝗲𝗻𝗰𝗶𝗮 𝗮𝗻𝗮𝗹í𝘁𝗶𝗰𝗮 𝘃𝗶𝘃𝗮, 𝗽𝗿𝗲𝗱𝗶𝗰𝘁𝗶𝘃𝗮 𝘆 𝗰𝗼𝗻𝘃𝗲𝗿𝘀𝗮𝗰𝗶𝗼𝗻𝗮𝗹 𝗾𝘂𝗲 𝗱𝗶𝗮𝗴𝗻𝗼𝘀𝘁𝗶𝗾𝘂𝗲, 𝗮𝗻𝘁𝗶𝗰𝗶𝗽𝗲 𝗿𝗶𝗲𝘀𝗴𝗼𝘀 𝘆 𝗹𝗲 𝗵𝗮𝗯𝗹𝗲 𝗱𝗶𝗿𝗲𝗰𝘁𝗮𝗺𝗲𝗻𝘁𝗲 𝗮𝗹 𝘁𝗼𝗺𝗮𝗱𝗼𝗿 𝗱𝗲 𝗱𝗲𝗰𝗶𝘀𝗶𝗼𝗻𝗲𝘀?
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔬 ¿𝗘𝗡 𝗤𝗨É 𝗖𝗢𝗡𝗦𝗜𝗦𝗧𝗘 𝗘𝗦𝗧𝗘 𝗣𝗥𝗢𝗬𝗘𝗖𝗧𝗢 𝗗𝗘 𝗜 + 𝗗 + 𝗶?
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Se trata de un laboratorio analítico y aplicativo de diagnóstico integral que unifica la ciencia de datos con la visión ejecutiva de negocios, integrando:
+
+🔹 𝟭. 𝗙𝗶𝗻𝗮𝗻𝘇𝗮𝘀 & 𝗨𝗻𝗶𝘁 𝗘𝗰𝗼𝗻𝗼𝗺𝗶𝗰𝘀: Desglose secuencial de cuenta de resultados (P&L: Ingresos brutos ➔ Costo directo de mercancías COGS ➔ Margen bruto ➔ Inversión total en adquisición CAC ➔ Margen de contribución neta real) y métricas de eficiencia de capital como el multiplicador 𝗟𝗧𝗩 / 𝗖𝗔𝗖.
+
+🔹 𝟮. 𝗠𝗮𝗰𝗵𝗶𝗻𝗲 𝗟𝗲𝗮𝗿𝗻𝗶𝗻𝗴 𝗦𝘂𝗽𝗲𝗿𝘃𝗶𝘀𝗮𝗱𝗼: Clasificación y predicción probabilística de fuga de clientes (Churn) mediante un ensemble de modelos (𝗥𝗮𝗻𝗱𝗼𝗺 𝗙𝗼𝗿𝗲𝘀𝘁, 𝗚𝗿𝗮𝗱𝗶𝗲𝗻𝘁 𝗕𝗼𝗼𝘀𝘁𝗶𝗻𝗴 y 𝗥𝗲𝗴𝗿𝗲𝘀𝗶ó𝗻 𝗟𝗼𝗴í𝘀𝘁𝗶𝗰𝗮) evaluados con validación cruzada estratificada (5-Fold CV), matrices de confusión, curvas ROC y análisis de importancia relativa de variables (𝗙𝗲𝗮𝘁𝘂𝗿𝗲 𝗜𝗺𝗽𝗼𝗿𝘁𝗮𝗻𝗰𝗲), sumado a un simulador interactivo 𝗪𝗵𝗮𝘁-𝗜𝗳.
+
+🔹 𝟯. 𝗠𝗮𝗰𝗵𝗶𝗻𝗲 𝗟𝗲𝗮𝗿𝗻𝗶𝗻𝗴 𝗡𝗼 𝗦𝘂𝗽𝗲𝗿𝘃𝗶𝘀𝗮𝗱𝗼: Segmentación conductual de cartera aplicando 𝗞-𝗠𝗲𝗮𝗻𝘀 sobre variables RFM (Recencia, Frecuencia y Monto de compra) y reducción de dimensionalidad con 𝗣𝗖𝗔 (Análisis de Componentes Principales), asistido por diagnóstico formal de K óptimo vía Método del Codo y Coeficiente de Silueta.
+
+🔹 𝟰. 𝗘𝘀𝘁𝗮𝗱í𝘀𝘁𝗶𝗰𝗮 𝗜𝗻𝗳𝗲𝗿𝗲𝗻𝗰𝗶𝗮𝗹 & 𝗣𝗿𝘂𝗲𝗯𝗮𝘀 𝗱𝗲 𝗛𝗶𝗽ó𝘁𝗲𝘀𝗶𝘀: Aplicación de contrastes no paramétricos con niveles de confianza del 95% (𝗖𝗼𝗿𝗿𝗲𝗹𝗮𝗰𝗶ó𝗻 𝗱𝗲 𝗦𝗽𝗲𝗮𝗿𝗺𝗮𝗻, 𝗞𝗿𝘂𝘀𝗸𝗮𝗹-𝗪𝗮𝗹𝗹𝗶𝘀 para variabilidad de márgenes y 𝗠𝗮𝗻𝗻-𝗪𝗵𝗶𝘁𝗻𝗲𝘆 𝗨 para impacto logístico en la satisfacción) que aíslan causalidades reales de meras variaciones aleatorias.
+
+🔹 𝟱. 𝗦𝗶𝘀𝘁𝗲𝗺𝗮 𝗱𝗲 𝗡𝗮𝗿𝗿𝗮𝗰𝗶ó𝗻 𝗜𝗻𝘁𝗲𝗹𝗶𝗴𝗲𝗻𝘁𝗲 𝗽𝗼𝗿 𝗩𝗼𝘇 (𝗩𝗼𝗶𝗰𝗲 𝗔𝗜 𝗡𝗮𝘁𝗶𝘃𝗮): Un copiloto analítico que, haciendo uso de la 𝗪𝗲𝗯 𝗦𝗽𝗲𝗲𝗰𝗵 𝗔𝗣𝗜, genera en tiempo real una locución fonética precisa y adaptada en español neutro, verbalizando tanto los hallazgos de cada gráfico como los resúmenes ejecutivos, conclusiones y recomendaciones tácticas de cada tabla del sistema.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 𝗥𝗔𝗗𝗜𝗢𝗚𝗥𝗔𝗙Í𝗔 𝗖𝗨𝗔𝗡𝗧𝗜𝗧𝗔𝗧𝗜𝗩𝗔 𝗗𝗘𝗟 𝗣𝗥𝗢𝗬𝗘𝗖𝗧𝗢
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🧭 𝗕𝗮𝗿𝗿𝗮 𝗱𝗲 𝗡𝗮𝘃𝗲𝗴𝗮𝗰𝗶ó𝗻 𝗙𝗶𝗷𝗮 𝗦𝘂𝗽𝗲𝗿𝗶𝗼𝗿 (𝗦𝘁𝗶𝗰𝗸𝘆 𝗡𝗮𝘃𝗯𝗮𝗿): Menú interactivo flotante con 11 pestañas de especialización, sincronizado con un título dinámico que se concatena según el área activa y botones de avance/retroceso rápido.
+
+⚡ 𝟳 𝗧𝗮𝗿𝗷𝗲𝘁𝗮𝘀 𝗞𝗣𝗜 𝗕𝗲𝗻𝘁𝗼 𝗔𝗻𝗶𝗺𝗮𝗱𝗮𝘀: Métricas clave calibradas con dimensiones uniformes, semaforización condicional y barras dinámicas con micro-animaciones fluidas tipo ola marina.
+
+📈 𝗠á𝘀 𝗱𝗲 𝟮𝟱 𝗚𝗿á𝗳𝗶𝗰𝗼𝘀 𝗔𝗻𝗮𝗹í𝘁𝗶𝗰𝗼𝘀 𝗱𝗲 𝗔𝗹𝘁𝗮 𝗗𝗲𝗳𝗶𝗻𝗶𝗰𝗶ó𝗻 (𝗣𝗹𝗼𝘁𝗹𝘆 𝗛𝗗):
+   ▫️ Treemaps financieros jerárquicos con escala divergente semafórica.
+   ▫️ Diagramas de flujo Sankey (origen de canal ➔ destino en línea de negocio).
+   ▫️ Gráficos Sunburst anulares de jerarquía comercial.
+   ▫️ Cascadas financieras Waterfall (de ingresos brutos a contribución neta).
+   ▫️ Curvas de concentración de Lorenz (Ley de Pareto 80/20 y segmentación ABC).
+   ▫️ Matrices de calor (Heatmaps) de estacionalidad mensual y cruces regionales.
+   ▫️ Gráficos de violín y diagramas de caja (Box Plots) en escala logarítmica.
+   ▫️ Gráficos de dispersión multivariados y ajustes de regresión lineal.
+
+📋 𝗧𝗮𝗯𝗹𝗮𝘀 𝗠𝗮𝗲𝘀𝘁𝗿𝗮𝘀 𝗰𝗼𝗻 𝗙𝗼𝗿𝗺𝗮𝘁𝗼 𝗖𝗼𝗻𝗱𝗶𝗰𝗶𝗼𝗻𝗮𝗹: Cada tabla cuenta con una tarjeta Bento ejecutiva de diagnóstico, badge con conteo de registros analizados, tips operativos y reproductor de voz integrado.
+
+🎛️ 𝗦𝗲𝗴𝗺𝗲𝗻𝘁𝗮𝗰𝗶ó𝗻 𝗠𝘂𝗹𝘁𝗶𝗱𝗶𝗺𝗲𝗻𝘀𝗶𝗼𝗻𝗮𝗹 𝗥𝗲𝗮𝗰𝘁𝗶𝘃𝗮: Filtros interactivos en contenedor unificado para Año fiscal, Meses del año (con botones masivos Todos/Ninguno), Tipo de cuenta, Región, Categoría, Canal comercial y Vendedor asignado.
+
+🎨 𝗗𝗶𝘀𝗲ñ𝗼 𝘆 𝗔𝗰𝗰𝗲𝘀𝗶𝗯𝗶𝗹𝗶𝗱𝗮𝗱 𝗨𝗻𝗶𝘃𝗲𝗿𝘀𝗮𝗹: Cumplimiento de estándares WCAG 2.2 AAA con paletas sobrias de alto contraste en Modo Oscuro y Modo Claro.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+🗂️ 𝗟𝗢𝗦 𝟭𝟭 𝗠Ó𝗗𝗨𝗟𝗢𝗦 𝗘𝗦𝗣𝗘𝗖𝗜𝗔𝗟𝗜𝗭𝗔𝗗𝗢𝗦 𝗜𝗡𝗧𝗘𝗚𝗥𝗔𝗗𝗢𝗦
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1️⃣ 🧭 𝗥𝗲𝘀𝘂𝗺𝗲𝗻 𝗘𝗷𝗲𝗰𝘂𝘁𝗶𝘃𝗼: Semáforo de salud del negocio, Treemap y flujos comerciales.
+2️⃣ 📈 𝗖𝗼𝗺𝗲𝗿𝗰𝗶𝗮𝗹 & 𝗧𝗲𝗻𝗱𝗲𝗻𝗰𝗶𝗮𝘀: Evolución mensual, medias móviles trimestrales y estacionalidad.
+3️⃣ 💰 𝗙𝗶𝗻𝗮𝗻𝘇𝗮𝘀 𝟯𝟲𝟬°: Cascada P&L, elasticidad de descuentos y rentabilidad sobre CAC.
+4️⃣ 🤖 𝗣𝗿𝗲𝗱𝗶𝗰𝘁𝗶𝘃𝗲 𝗖𝗵𝘂𝗿𝗻 (𝗠𝗟): Ensemble predictivo, curvas ROC y simulador What-If.
+5️⃣ 🎯 𝗦𝗲𝗴𝗺𝗲𝗻𝘁𝗮𝗰𝗶ó𝗻 𝗥𝗙𝗠: Clustering K-Means, siluetas, PCA y estrategias por clúster.
+6️⃣ 🗺️ 𝗧𝗲𝗿𝗿𝗶𝘁𝗼𝗿𝗶𝗼 & 𝗟𝗼𝗴í𝘀𝘁𝗶𝗰𝗮: Rutas críticas, cuellos de botella y cumplimiento de SLA.
+7️⃣ 👥 𝗖𝗹𝗶𝗲𝗻𝘁𝗲𝘀 𝗣𝗮𝗿𝗲𝘁𝗼 & 𝗔𝗕𝗖: Curva de Lorenz 80/20 y cuadrantes de valor vs riesgo.
+8️⃣ 👔 𝗙𝘂𝗲𝗿𝘇𝗮 𝗱𝗲 𝗩𝗲𝗻𝘁𝗮𝘀: Scorecard integral multidimensional y seguimiento de cuotas.
+9️⃣ 📦 𝗣𝗼𝗿𝘁𝗮𝗳𝗼𝗹𝗶𝗼 𝗕𝗖𝗚: Matriz de rotación vs margen y precios unitarios.
+🔟 📐 𝗘𝘀𝘁𝗮𝗱í𝘀𝘁𝗶𝗰𝗮 𝗔𝘃𝗮𝗻𝘇𝗮𝗱𝗮: Matrices de correlación y validación formal de hipótesis.
+1️⃣1️⃣ 📋 𝗔𝘂𝗱𝗶𝘁𝗼𝗿í𝗮 & 𝗖𝗮𝗹𝗶𝗱𝗮𝗱: Detalle transaccional y 7 controles automatizados de integridad de datos.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+🛠️ 𝗦𝗧𝗔𝗖𝗞 𝗧𝗘𝗖𝗡𝗢𝗟Ó𝗚𝗜𝗖𝗢 𝗜𝗠𝗣𝗟𝗘𝗠𝗘𝗡𝗧𝗔𝗗𝗢
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔸 𝗟𝗲𝗻𝗴𝘂𝗮𝗷𝗲 & 𝗖𝗼𝗿𝗲: Python 3.12
+🔸 𝗙𝗿𝗮𝗺𝗲𝘄𝗼𝗿𝗸 𝗪𝗲𝗯 & 𝗨𝗜: Streamlit 1.35+
+🔸 𝗠𝗼𝘁𝗼𝗿 𝗚𝗿á𝗳𝗶𝗰𝗼: Plotly Express & Plotly Graph Objects
+🔸 𝗠𝗮𝗰𝗵𝗶𝗻𝗲 𝗟𝗲𝗮𝗿𝗻𝗶𝗻𝗴 & 𝗠𝗼𝗱𝗲𝗹𝗮𝗱𝗼: Scikit-Learn (RandomForest, GradientBoosting, LogisticRegression, KMeans, PCA, StandardScaler)
+🔸 𝗘𝘀𝘁𝗮𝗱í𝘀𝘁𝗶𝗰𝗮 𝗜𝗻𝗳𝗲𝗿𝗲𝗻𝗰𝗶𝗮𝗹: SciPy Stats
+🔸 𝗠𝗮𝗻𝗶𝗽𝘂𝗹𝗮𝗰𝗶ó𝗻 𝗱𝗲 𝗗𝗮𝘁𝗼𝘀: Pandas & NumPy
+🔸 𝗣𝗿𝗼𝗰𝗲𝘀𝗮𝗺𝗶𝗲𝗻𝘁𝗼 𝗱𝗲 𝗔𝗿𝗰𝗵𝗶𝘃𝗼𝘀: OpenPyXL
+🔸 𝗔𝘂𝗱𝗶𝗼 & 𝗔𝗰𝗰𝗲𝘀𝗶𝗯𝗶𝗹𝗶𝗱𝗮𝗱: Web Speech API nativa (100% libre, sin APIs de pago)
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+🚀 𝗧𝗘 𝗜𝗡𝗩𝗜𝗧𝗢 𝗔 𝗣𝗥𝗢𝗕𝗔𝗥𝗟𝗢 𝗬 𝗘𝗫𝗣𝗟𝗢𝗥𝗔𝗥 𝗘𝗟 𝗖Ó𝗗𝗜𝗚𝗢
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🌐 𝗗𝗘𝗠𝗢 𝗘𝗡 𝗩𝗜𝗩𝗢 𝗘𝗡 𝗟𝗔 𝗡𝗨𝗕𝗘 (𝗦𝘁𝗿𝗲𝗮𝗺𝗹𝗶𝘁 𝗖𝗹𝗼𝘂𝗱):
+👉 https://plataforma-ejecutiva-bi-storytelling-ml.streamlit.app/
+
+⭐ 𝗥𝗘𝗣𝗢𝗦𝗜𝗧𝗢𝗥𝗜𝗢 𝗢𝗙𝗜𝗖𝗜𝗔𝗟 𝗘𝗡 𝗚𝗜𝗧𝗛𝗨𝗕:
+👉 https://github.com/JUANCITOPENA/Plataforma-Ejecutiva-BI-Storytelling-ML
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+💬 ¡𝗧𝗨 𝗢𝗣𝗜𝗡𝗜Ó𝗡 𝗬 𝗥𝗘𝗧𝗥𝗢𝗔𝗟𝗜𝗠𝗘𝗡𝗧𝗔𝗖𝗜Ó𝗡 𝗦𝗢𝗡 𝗠𝗨𝗬 𝗩𝗔𝗟𝗜𝗢𝗦𝗔𝗦!
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. ¿Cómo visualizas la integración de modelos predictivos de Machine Learning y locución por voz dentro de las herramientas analíticas del día a día en las empresas?
+2. Si te apasiona la ciencia de datos, el BI y el desarrollo de herramientas inteligentes, ¡𝗽𝗿𝘂é𝗯𝗮𝗹𝗼, 𝗰𝗼𝗺𝗽á𝗿𝘁𝗲𝗹𝗼 𝗰𝗼𝗻 𝘁𝘂𝘀 𝗰𝗼𝗻𝘁𝗮𝗰𝘁𝗼𝘀 𝘆 𝗮𝗺𝗶𝗴𝗼𝘀 y déjame tus observaciones o sugerencias en los comentarios! 👇
+
+¡Sigamos construyendo juntos el futuro de la analítica de datos y la inteligencia artificial! 🚀💡
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+#BusinessIntelligence #DataScience #MachineLearning #Python #Streamlit #VoiceAI #DataAnalytics #FinancialModeling #ArtificialIntelligence #Statistics #Storytelling #DataEngineering #FinOps #Innovation #OpenSource #Analytics
