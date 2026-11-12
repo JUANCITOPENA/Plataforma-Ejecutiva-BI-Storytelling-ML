@@ -28,6 +28,23 @@ Integra en una única experiencia interactiva:
 
 ---
 
+## 📸 Galería Visual de la Plataforma
+
+<div align="center">
+
+### 🧭 Vista Ejecutiva Principal & Centro de Comando BI
+![Hero Dashboard Executive](assets/screenshots/01_hero_dashboard_executive.png)
+
+### 🎙️ Scorecard de Salud con Resumen Ejecutivo, Tips y Locución por Voz (Web Speech API)
+![Voice Scorecard Bento](assets/screenshots/02_voice_scorecard_bento.png)
+
+### 🤖 Inteligencia Predictiva: Machine Learning Supervisado para Retención de Clientes
+![Predictive Churn ML](assets/screenshots/03_predictive_churn_ml.png)
+
+</div>
+
+---
+
 ## 🎛️ Las 11 Pestañas Analíticas
 
 ```
