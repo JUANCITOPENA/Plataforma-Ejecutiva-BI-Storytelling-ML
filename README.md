@@ -1,18 +1,23 @@
 # 📊 Plataforma Ejecutiva de Analítica Avanzada & Diagnóstico Financiero 360°
 ### *Business Intelligence, Machine Learning Supervisado & No Supervisado, Copiloto de Storytelling Dinámico y Síntesis Fonética por Voz (Voice AI)*
 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://plataforma-ejecutiva-bi-storytelling-ml.streamlit.app/)
+[![App En Vivo](https://img.shields.io/badge/Demo_En_Vivo-Visitar_Plataforma-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)](https://plataforma-ejecutiva-bi-storytelling-ml.streamlit.app/)
 ![Python](https://img.shields.io/badge/Python-3.10%20%7C%203.11%20%7C%203.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.35+-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 ![Plotly](https://img.shields.io/badge/Plotly-Dashboards%20HD-3F4F75?style=for-the-badge&logo=plotly&logoColor=white)
 ![Scikit-Learn](https://img.shields.io/badge/Scikit--Learn-ML%20Ensemble-F7931E?style=for-the-badge&logo=scikitlearn&logoColor=white)
 ![Web Speech API](https://img.shields.io/badge/Voice%20AI-Web%20Speech%20API-10B981?style=for-the-badge&logo=soundcharts&logoColor=white)
 ![WCAG](https://img.shields.io/badge/Accessibility-WCAG%202.2%20AAA-0284C7?style=for-the-badge)
 
+> ### 🌐 **Acceso Directo a la Aplicación en Vivo**
+> Accede e interactúa en tiempo real con el dashboard, los modelos predictivos de Machine Learning y la locución fonética por voz en Streamlit Cloud:  
+> 🔗 **[https://plataforma-ejecutiva-bi-storytelling-ml.streamlit.app/](https://plataforma-ejecutiva-bi-storytelling-ml.streamlit.app/)**
+
 ---
 
 ## 🧭 Visión General del Proyecto
 
-La **Plataforma Ejecutiva de Analítica Avanzada & Diagnóstico Financiero** es un centro de comando integral de Business Intelligence y Ciencia de Datos diseñado para comités de dirección, directores de finanzas (CFO), operaciones (COO) y ventas (CRO).
+La **Plataforma Ejecutiva de Analítica Avanzada & Diagnóstico Financiero** ([visitar demo interactiva](https://plataforma-ejecutiva-bi-storytelling-ml.streamlit.app/)) es un centro de comando integral de Business Intelligence y Ciencia de Datos diseñado para comités de dirección, directores de finanzas (CFO), operaciones (COO) y ventas (CRO).
 
 Integra en una única experiencia interactiva:
 1. **Modelado Financiero 360°**: Desglose P&L de facturación, costo directo (COGS), margen bruto retenido, inversión en adquisición (CAC total) y margen de contribución neta, junto con Unit Economics clave (`LTV/CAC`).
@@ -171,17 +176,16 @@ La plataforma se abrirá automáticamente en tu navegador predeterminado en `htt
 
 ## ☁️ Publicación en Streamlit Community Cloud
 
-Para desplegar esta plataforma en la nube pública de Streamlit de forma gratuita:
+Esta plataforma se encuentra desplegada y operativa en producción en **Streamlit Community Cloud**:
 
-1. Ve a [share.streamlit.io](https://share.streamlit.io) e inicia sesión con tu cuenta de **GitHub**.
-2. Haz clic en el botón azul **"New app"**.
-3. Configura los siguientes campos:
-   * **Repository**: `JUANCITOPENA/Plataforma-Ejecutiva-BI-Storytelling-ML`
-   * **Branch**: `main`
-   * **Main file path**: `app.py`
-   * **App URL (Opcional)**: `plataforma-ejecutiva-bi-juancitopena` (o el nombre de tu preferencia).
-4. Haz clic en **"Deploy!"**.
-5. ¡Listo! Streamlit instalará automáticamente `requirements.txt` y tu dashboard estará en vivo para cualquier usuario del mundo con soporte de voz y analítica en tiempo real.
+🔗 **Enlace Oficial**: [https://plataforma-ejecutiva-bi-storytelling-ml.streamlit.app/](https://plataforma-ejecutiva-bi-storytelling-ml.streamlit.app/)
+
+### Parámetros de Configuración en la Nube:
+* **Repository**: `JUANCITOPENA/Plataforma-Ejecutiva-BI-Storytelling-ML`
+* **Branch**: `main`
+* **Main file path**: `app.py`
+* **App URL**: `https://plataforma-ejecutiva-bi-storytelling-ml.streamlit.app/`
+* **Requisitos**: Instalados automáticamente vía `requirements.txt`.
 
 ---
 
