@@ -1620,6 +1620,118 @@ def render_cockpit_header(show_master_voice=True, key_suffix="", tab_title="🧭
 
     html("<div style='height: 12px;'></div>")
 
+# ------------------------------------------------------------------------------
+# HELPER: ANÁLISIS DE PARETO + CLASIFICACIÓN ABC (barras + línea acumulada, ancho completo)
+# ------------------------------------------------------------------------------
+ABC_COLORS = {"A": THEME["accent_blue"], "B": THEME["accent_purple"], "C": THEME["warning"]}
+
+
+def _money_short(x):
+    ax = abs(x)
+    if ax >= 1e6:
+        return f"${x / 1e6:,.1f}M"
+    if ax >= 1e3:
+        return f"${x / 1e3:,.1f}k"
+    return f"${x:,.0f}"
+
+
+def pareto_abc(d, col, entidad, icono, value="Monto_Compra", etiqueta_valor="Ventas"):
+    """
+    Gráfico de Pareto a ancho completo: barras de valor coloreadas por clase ABC (A ≤ 80%, B ≤ 95%, C resto),
+    línea de % acumulado con marcadores por clase, etiquetas de valor y de %, líneas de corte horizontales
+    (80% y 95%) y corte vertical donde termina la Clase A. Incluye tabla resumen ABC.
+    """
+    g = d.groupby(col)[value].sum().sort_values(ascending=False).reset_index()
+    g = g[g[value] > 0].reset_index(drop=True)
+    if g.empty:
+        return
+    tot = g[value].sum()
+    n = len(g)
+    g["Pct"] = g[value] / tot * 100
+    g["Acum"] = g["Pct"].cumsum()
+    g["Prev"] = g["Acum"] - g["Pct"]
+    g["Clase"] = g["Prev"].map(pareto_class)
+    names = g[col].astype(str).tolist()
+
+    # Posiciones clave: fin de A, fin de B y primeros elementos (para etiquetar sin saturar con muchos elementos)
+    idx_a = g.index[g["Clase"] == "A"].tolist()
+    idx_b = g.index[g["Clase"] == "B"].tolist()
+    last_a = idx_a[-1] if idx_a else 0
+    last_b = idx_b[-1] if idx_b else last_a
+    if n <= 30:
+        label_idx = set(range(n))
+    else:
+        label_idx = set(range(min(10, n))) | {last_a, last_b, n - 1}
+    bar_text = [_money_short(v) if i in label_idx else "" for i, v in enumerate(g[value])]
+    line_text = [f"{a:.0f}%" if i in label_idx else "" for i, a in enumerate(g["Acum"])]
+
+    section(f"📊 Análisis de Pareto y Clasificación ABC · {entidad}")
+
+    fig = make_subplots(specs=[[{"secondary_y": True}]])
+    for cl in ["A", "B", "C"]:
+        sub = g[g["Clase"] == cl]
+        if sub.empty:
+            continue
+        fig.add_trace(go.Bar(
+            x=[names[i] for i in sub.index], y=sub[value], name=f"Clase {cl}", marker_color=ABC_COLORS[cl],
+            text=[bar_text[i] for i in sub.index], textposition="outside", cliponaxis=False,
+            textfont=dict(size=10, color=THEME["text_primary"]),
+            customdata=np.stack([sub["Pct"], sub["Acum"]], axis=-1),
+            hovertemplate=("<b>🏷️ %{x}</b><br>🔠 <b>Clase:</b> " + cl + "<br>💰 <b>" + etiqueta_valor + ":</b> $%{y:,.0f}"
+                           "<br>📊 <b>Participación:</b> %{customdata[0]:.1f}%<br>📈 <b>% Acumulado:</b> %{customdata[1]:.1f}%<extra></extra>")
+        ), secondary_y=False)
+    fig.add_trace(go.Scatter(
+        x=names, y=g["Acum"], name="% Acumulado", mode="lines+markers+text",
+        line=dict(color=THEME["accent_pink"], width=3),
+        marker=dict(size=8, color=[ABC_COLORS[c] for c in g["Clase"]], line=dict(color=THEME["accent_pink"], width=2)),
+        text=line_text, textposition="top center", textfont=dict(size=10, color=THEME["accent_pink"]),
+        hovertemplate="<b>🏷️ %{x}</b><br>📈 <b>% Acumulado:</b> %{y:.1f}%<extra>Línea Pareto</extra>"
+    ), secondary_y=True)
+
+    # Líneas de corte horizontales 80% y 95% (eje derecho)
+    for yv, txt, colr in [(80, "Corte A · 80%", THEME["success"]), (95, "Corte B · 95%", THEME["danger"])]:
+        fig.add_shape(type="line", xref="paper", x0=0, x1=1, yref="y2", y0=yv, y1=yv,
+                      line=dict(color=colr, width=1.6, dash="dash"))
+        fig.add_annotation(xref="paper", x=0.995, yref="y2", y=yv, text=f"<b>{txt}</b>", showarrow=False,
+                           xanchor="right", yanchor="bottom", font=dict(size=11, color=colr))
+    # Corte vertical lineal: donde termina la Clase A y donde termina la Clase B
+    for pos, txt, colr in [(last_a + 0.5, "Fin Clase A", THEME["success"]), (last_b + 0.5, "Fin Clase B", THEME["danger"])]:
+        if pos < n - 0.5:
+            fig.add_shape(type="line", xref="x", x0=pos, x1=pos, yref="paper", y0=0, y1=1,
+                          line=dict(color=colr, width=1.4, dash="dot"))
+            fig.add_annotation(xref="x", x=pos, yref="paper", y=1.0, text=f"<b>{txt}</b>", showarrow=False,
+                               xanchor="left", yanchor="top", font=dict(size=10, color=colr))
+
+    fig.update_layout(title=f"{icono} Pareto 80/20 y clasificación ABC — {entidad}", barmode="overlay", bargap=0.25)
+    fig.update_xaxes(categoryorder="array", categoryarray=names, tickangle=-40)
+    fig.update_yaxes(title_text=f"{etiqueta_valor} ($)", secondary_y=False)
+    fig.update_yaxes(title_text="% acumulado", secondary_y=True, range=[0, 112], ticksuffix="%", showgrid=False)
+
+    nA, nB, nC = (g["Clase"] == "A").sum(), (g["Clase"] == "B").sum(), (g["Clase"] == "C").sum()
+    shA = g.loc[g["Clase"] == "A", "Pct"].sum()
+    shB = g.loc[g["Clase"] == "B", "Pct"].sum()
+    shC = g.loc[g["Clase"] == "C", "Pct"].sum()
+    top1 = g.iloc[0]
+    chart(fig,
+          f"Barras = {etiqueta_valor.lower()} por {entidad.lower()} ordenados de mayor a menor, coloreados por clase ABC (azul = A, morado = B, ámbar = C); "
+          f"línea rosa = % acumulado (eje derecho) con líneas de corte en 80% y 95%.",
+          f"La {kw('Clase A', 'key')} reúne {nA} de {n} elementos ({nA / n * 100:.0f}%) y aporta el {kw(f'{shA:.0f}%', 'pos')} del total; "
+          f"Clase B: {nB} elementos ({shB:.0f}%); Clase C: {nC} elementos ({shC:.0f}%). "
+          f"El líder es {kw(str(top1[col]), 'info')} con {usd(top1[value])} ({top1['Pct']:.1f}%).",
+          f"Concentrar atención comercial y de servicio en la Clase A ({nA} elementos), gestionar la Clase B con seguimiento regular "
+          f"y automatizar la Clase C para optimizar recursos.",
+          520)
+
+    res = g.groupby("Clase").agg(Elementos=(col, "count"), Monto=(value, "sum")).reset_index()
+    res["% Elementos"] = res["Elementos"] / n * 100
+    res["% del Total"] = res["Monto"] / tot * 100
+    res["Clase"] = res["Clase"].map({"A": "🅰️ Clase A (hasta 80%)", "B": "🅱️ Clase B (80%–95%)", "C": "🅲 Clase C (último 5%)"})
+    res = res.rename(columns={"Monto": f"{etiqueta_valor} ($)"})
+    show_table(res[["Clase", "Elementos", "% Elementos", f"{etiqueta_valor} ($)", "% del Total"]],
+               {"% Elementos": "{:.1f}%", f"{etiqueta_valor} ($)": "${:,.0f}", "% del Total": "{:.1f}%"},
+               neutral=["Elementos"], good=[f"{etiqueta_valor} ($)", "% del Total"])
+
+
 # ==============================================================================
 # 8. MÓDULOS ANALÍTICOS (11 PESTAÑAS COMPLETAS)
 # ==============================================================================
@@ -2410,6 +2522,8 @@ def tab_clientes():
               "Las cuentas ubicadas en el cuadrante superior derecho requieren intervención urgente por su elevado impacto económico.",
               "Convocar reuniones ejecutivas de fidelización con los responsables de compras de las cuentas en alto riesgo de valor crítico.", 390)
 
+    pareto_abc(df, "Cuenta", "Clientes", "👥")
+
     section("📋 Top 20 Clientes Estratégicos")
     t = cust.head(20)[["Cuenta", "Tipo_Cliente_Cuenta", "Clase", "Facturacion", "Pct_Acum", "Margen", "Ordenes", "Recencia_Min", "CSAT", "Churn"]]
     show_table(t, {"Facturacion": "${:,.0f}", "Pct_Acum": "{:.1f}%", "Margen": "${:,.0f}", "Recencia_Min": "{:.0f} d", "CSAT": "{:.1f} ★", "Churn": "{:.2f}"},
@@ -2498,6 +2612,8 @@ def tab_vendedores():
         chart(fig, "Puntuación global ponderada: 30% ventas, 25% margen, 15% CSAT, 15% retención y 15% disciplina en descuentos.",
               "El scorecard destaca a los ejecutivos más equilibrados en rentabilidad, volumen y fidelización de clientes.",
               "Utilizar el scorecard compuesto como base para bonificaciones periódicas y planes de desarrollo comercial.", 390)
+
+    pareto_abc(df, "Vendedor_Asignado", "Vendedores", "👔")
 
     section("📋 Scorecard del Equipo Comercial")
     show_table(v[["Vendedor_Asignado", "Ventas", "Meta", "Cumpl. meta %", "Margen", "Margen %", "Ticket", "Desc", "CSAT", "Score"]],
@@ -2620,6 +2736,8 @@ def tab_portafolio():
         chart(fig, "Diagrama de cajas con mediana, rango intercuartílico y dispersión de precios unitarios por categoría.",
               "Alta dispersión en categorías corporativas frente a homogeneidad de precios en líneas de consumo prosumer.",
               "Ajustar las listas de precios recomendados para capturar mayor valor en segmentos con baja sensibilidad al precio.", 390)
+
+    pareto_abc(df, "Producto_Principal", "Productos (SKU)", "📦")
 
     section("📋 Detalle de Productos del Catálogo")
     show_table(p[["Producto_Principal", "Categoria", "Cuadrante", "Ventas", "Margen", "Margen %", "Unidades", "Precio_Unit", "Desc"]],
@@ -2966,12 +3084,127 @@ for idx, (tab, fn, title) in enumerate(zip(TABS, tab_funcs, TAB_TITLES)):
             f'</div></div>'
         )
 
+
 # ==============================================================================
-# 11. PIE DE PÁGINA CORPORATIVO
+# 11. FOOTER OFICIAL DEL AUTOR (ESTÁNDAR NEO-BRUTALISTA JPV)
+# CORREGIDO: se eliminó el `"""` huérfano que rompía el archivo (SyntaxError) y
+# la variable `footer_html` ahora está definida. Se reemplazan las clases de
+# Bootstrap (que Streamlit no carga) por CSS propio con prefijo `jpv-`, y los
+# íconos `bi-*` por emojis / logos Devicon. HTML sin sangría ni líneas en blanco
+# para que el parser Markdown de Streamlit no lo convierta en bloque de código.
 # ==============================================================================
-st.markdown("---")
-html(
-    f'<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;font-size:0.85rem;color:{THEME["text_secondary"]};">'
-    f'<div>⚡ <b>Executive 360° Enterprise BI & Machine Learning Suite</b> | Streamlit • Plotly • Scikit-Learn • SciPy • Web Speech API</div>'
-    f'<div>Ing. Juancito Peña · Analítica integral con narración ejecutiva inteligente y locución fonética en tiempo real</div></div>'
-)
+footer_html = """
+<style>
+.jpv-wrap { margin: 40px 0 0 0; width: 100%; }
+.jpv-card { background: #FFFFFF !important; border: 2.5px solid #000000 !important; border-radius: 14px !important; padding: 28px !important; box-shadow: 6px 6px 0px #000000 !important; margin-bottom: 24px !important; display: flex !important; flex-wrap: wrap !important; gap: 28px !important; align-items: flex-start !important; }
+.jpv-left { flex: 1 1 420px; min-width: 280px; }
+.jpv-right { flex: 1 1 340px; min-width: 280px; }
+.jpv-head { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+.jpv-avatar { width: 86px !important; height: 86px !important; object-fit: cover !important; border-radius: 50% !important; border: 2.5px solid #000000 !important; box-shadow: 3px 3px 0px #000000 !important; flex-shrink: 0; }
+.jpv-name { font-size: 1.35rem !important; font-weight: 800 !important; margin: 0 0 6px 0 !important; color: #000000 !important; line-height: 1.2 !important; }
+.jpv-badge { display: inline-block; padding: 3px 10px; border-radius: 6px; font-size: 0.74rem; font-weight: 700; margin: 2px 4px 2px 0; }
+.jpv-b-dark { background: #212529 !important; color: #FFFFFF !important; }
+.jpv-b-red { background: #DC3545 !important; color: #FFFFFF !important; }
+.jpv-b-blue { background: #0D6EFD !important; color: #FFFFFF !important; }
+.jpv-b-yellow { background: #FFC107 !important; color: #212529 !important; }
+.jpv-p { font-size: 0.95rem !important; font-weight: 500 !important; line-height: 1.65 !important; color: #0F172A !important; margin: 0 0 12px 0 !important; }
+.jpv-p strong, .jpv-p b { color: #000000 !important; font-weight: 800 !important; }
+.jpv-p em { color: #0F172A !important; }
+.jpv-h6 { font-size: 0.95rem !important; font-weight: 800 !important; color: #000000 !important; margin: 0 0 8px 0 !important; }
+.jpv-group { display: block; font-size: 0.78rem !important; font-weight: 800 !important; color: #000000 !important; margin: 10px 0 2px 0 !important; }
+.jpv-pill { background: #FFFFFF !important; border: 1.5px solid #000000 !important; color: #000000 !important; font-weight: 700 !important; padding: 0.3rem 0.7rem !important; border-radius: 8px !important; font-size: 0.84rem !important; display: inline-flex !important; align-items: center !important; gap: 7px !important; box-shadow: 2px 2px 0px #000000 !important; margin: 3px 2px !important; vertical-align: middle !important; transition: all 0.15s ease !important; }
+.jpv-pill:hover { transform: translateY(-2px) !important; box-shadow: 3px 3px 0px #000000 !important; }
+.jpv-pill img { width: 22px !important; height: 22px !important; object-fit: contain !important; }
+.jpv-social-row { display: flex; gap: 10px; flex-wrap: wrap; margin: 4px 0 16px 0; }
+.jpv-social { width: 46px !important; height: 46px !important; background: #FFFFFF !important; border: 2px solid #000000 !important; border-radius: 8px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; font-size: 1.25rem !important; font-weight: 800 !important; color: #000000 !important; box-shadow: 3px 3px 0px #000000 !important; transition: all 0.15s ease !important; text-decoration: none !important; }
+.jpv-social:hover { transform: translate(-2px, -2px) !important; box-shadow: 5px 5px 0px #000000 !important; }
+.jpv-social img { width: 24px !important; height: 24px !important; object-fit: contain !important; }
+.jpv-yt { background: #FFFFFF !important; border: 2px solid #000000 !important; border-radius: 10px !important; padding: 10px 14px !important; box-shadow: 3px 3px 0px #000000 !important; display: flex !important; align-items: center !important; gap: 12px !important; }
+.jpv-yt-ico { font-size: 2rem; line-height: 1; }
+.jpv-yt-small { display: block; font-size: 0.78rem !important; font-weight: 800 !important; color: #DC3545 !important; }
+.jpv-yt a { font-weight: 800 !important; color: #000000 !important; text-decoration: none !important; font-size: 0.92rem !important; }
+.jpv-footer { background: #FFFFFF !important; border-top: 3px solid #000000 !important; padding: 26px 8px 8px 8px !important; width: 100% !important; display: flex !important; flex-wrap: wrap !important; justify-content: space-between !important; align-items: center !important; gap: 16px !important; }
+.jpv-footer-l { flex: 1 1 420px; }
+.jpv-tag { display: inline-block; background: #212529 !important; color: #FFFFFF !important; border: 1px solid #000000; padding: 3px 10px; border-radius: 6px; font-size: 0.76rem; font-weight: 800; margin-right: 8px; }
+.jpv-foot-t { color: #000000 !important; font-weight: 800 !important; }
+.jpv-foot-p { font-size: 0.84rem !important; color: #475569 !important; margin: 6px 0 0 0 !important; }
+.jpv-foot-s { font-size: 0.72rem !important; line-height: 1.4 !important; color: #475569 !important; margin: 8px 0 0 0 !important; }
+.jpv-foot-s strong { color: #0F172A !important; }
+.jpv-top { color: #DC3545 !important; font-weight: 800 !important; text-decoration: none !important; font-size: 1rem !important; cursor: pointer; }
+.jpv-mit { font-size: 0.8rem !important; color: #475569 !important; margin: 14px 0 0 0 !important; width: 100%; }
+</style>
+<div class="jpv-wrap">
+<div class="jpv-card">
+<div class="jpv-left">
+<div class="jpv-head">
+<img class="jpv-avatar" src="https://avatars.githubusercontent.com/u/38921558?v=4" alt="Ing. Juancito Peña Vizcaíno">
+<div>
+<h4 class="jpv-name">Ing. Juancito Peña Vizcaíno</h4>
+<div>
+<span class="jpv-badge jpv-b-dark">Data Analyst</span>
+<span class="jpv-badge jpv-b-red">Full Stack Dev</span>
+<span class="jpv-badge jpv-b-blue">AI &amp; API Expert</span>
+<span class="jpv-badge jpv-b-yellow">Líder I+D+i</span>
+</div>
+</div>
+</div>
+<p class="jpv-p"><strong>Ingeniero en Sistemas y Computación</strong> con Postgrado en <strong>Ingeniería de Software</strong> y Maestría en <strong>Sistemas Mención Gerencial</strong> (<em>Universidad Dominicana O&amp;M</em>). Con más de <strong>15 años de trayectoria</strong>, transformo problemas de alta complejidad en soluciones escalables. Durante el último año, he centrado mi trabajo en <strong>I+D+i (Investigación, Desarrollo e Innovación)</strong>, explorando arquitecturas de <strong>IA Generativa (RAG / LLMs)</strong>, integración de agentes autónomos con bases de datos y orquestación de APIs empresariales.</p>
+<p class="jpv-p">🔬 <strong>Mi motor es el aprendizaje a través de los retos:</strong> me apasionan los <em>casos de uso reales</em>, las <strong>pruebas técnicas rigurosas</strong>, la investigación profunda y el diseño de soluciones directas a problemas de ingeniería. 🎓 Como <strong>docente universitario</strong> y creador del canal educativo <strong>@JuancitoDevV</strong>, comparto este conocimiento práctico mediante ejercicios y proyectos de código abierto para acercar la tecnología a problemas reales. 🚀</p>
+</div>
+<div class="jpv-right">
+<h6 class="jpv-h6">🧰 Ecosistema de Tecnologías:</h6>
+<span class="jpv-group">🖥️ Frontend &amp; Web:</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML5"> HTML5</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3"> CSS3</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"> JavaScript</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React"> React</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" alt="Next.js"> Next.js</span>
+<span class="jpv-group">⚙️ Backend &amp; Multiplataforma:</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#"> C#</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dot-net/dot-net-original.svg" alt=".NET"> .NET / MAUI</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"> Python</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" alt="PHP"> PHP</span>
+<span class="jpv-group">📊 Data Analytics &amp; Bases de Datos:</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/microsoftsqlserver/microsoftsqlserver-plain.svg" alt="SQL Server"> SQL Server</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" alt="PostgreSQL"> PostgreSQL</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL"> MySQL</span>
+<span class="jpv-pill">📊 Power BI / DAX</span>
+<span class="jpv-group">🤖 IA + APIs &amp; Despliegue (I+D+i):</span>
+<span class="jpv-pill">🔌 APIs REST</span>
+<span class="jpv-pill">🧠 IA + LLMs (RAG)</span>
+<span class="jpv-pill">🤖 Agentes IA</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git"> Git</span>
+<span class="jpv-pill"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"> GitHub</span>
+<span class="jpv-pill">▲ Vercel</span>
+<h6 class="jpv-h6" style="margin-top:18px !important;">🌐 Canales Oficiales &amp; Redes:</h6>
+<div class="jpv-social-row">
+<a class="jpv-social" href="https://www.linkedin.com/in/juancitope%C3%B1a/" target="_blank" rel="noopener noreferrer" title="LinkedIn Oficial"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn"></a>
+<a class="jpv-social" href="https://www.youtube.com/@JuancitoDevV" target="_blank" rel="noopener noreferrer" title="YouTube @JuancitoDevV">▶️</a>
+<a class="jpv-social" href="https://github.com/JUANCITOPENA" target="_blank" rel="noopener noreferrer" title="GitHub @JUANCITOPENA"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub"></a>
+<a class="jpv-social" href="https://twitter.com/JuancitoPenaV" target="_blank" rel="noopener noreferrer" title="X (Twitter) @JuancitoPenaV">𝕏</a>
+<a class="jpv-social" href="mailto:juancito.pena@gmail.com" title="Correo Electrónico">✉️</a>
+</div>
+<div class="jpv-yt">
+<span class="jpv-yt-ico">▶️</span>
+<div>
+<span class="jpv-yt-small">Canal Educativo de YouTube:</span>
+<a href="https://www.youtube.com/@JuancitoDevV" target="_blank" rel="noopener noreferrer">@JuancitoDevV · Algoritmos, SQL, IA &amp; .NET ↗</a>
+</div>
+</div>
+</div>
+</div>
+<div class="jpv-footer">
+<div class="jpv-footer-l">
+<span class="jpv-tag">PROYECTO OFICIAL JPV</span>
+<strong class="jpv-foot-t">Sistemas, Datos &amp; Arquitectura de Software</strong>
+<p class="jpv-foot-p">Plataforma de grado industrial desarrollada bajo estándares de alto rendimiento, accesibilidad universal y diseño limpio.</p>
+<p class="jpv-foot-s"><strong>Aviso Académico &amp; Autoría:</strong> Diseñado, desarrollado y certificado por el <strong>Ing. Juancito Peña Vizcaíno</strong>. Todos los derechos reservados.</p>
+</div>
+<div>
+<a class="jpv-top" href="#" onclick="var m=document.querySelector('[data-testid=stMain]')||document.querySelector('section.main');if(m){m.scrollTo({top:0,behavior:'smooth'});}return false;">⬆️ Volver al Inicio</a>
+</div>
+</div>
+</div>
+"""
+
+html(footer_html)
